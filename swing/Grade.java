@@ -12,6 +12,11 @@ public class Grade {
 	private int korean;
 	private int english;
 	private int math;
+	private int student;
+	public int flag=1;	
+	public int rank;
+	public int total;
+	public int avg;
 	
 	public void setName(String name){
 		this.name = name;
@@ -19,17 +24,43 @@ public class Grade {
 	public String getName() {
 		return name;
 	}
+	public void setKorean(int korean){
+		this.korean = korean;
+	}
+	public int getKorean() {
+		return korean;
+	}
+	public void setEnglish(int english){
+		this.english = english;
+	}
+	public int getEnglish() {
+		return english;
+	}
+	public void setMath(int math){
+		this.math = math;
+	}
+	public int getMath() {
+		return math;
+	}
 	public void setScore(int korean, int english, int math){
 		this.korean = korean;
 		this.english = english;
 		this.math = math;
-	}
+	}	
 	public int total() {
-		return korean+english+math;
+		total = korean+english+math;
+		return total;
 	}
 	public int avg() {
-		return total()/3;
-	}	
+		avg = total/3;
+		return avg;
+	}
+	public void setStudent(int student){
+		this.student += student;
+	}
+	public int getStudent() {
+		return student;
+	}
 	public String grade() {
 		String grd = "";
 		int avg = avg()/10;
@@ -57,8 +88,7 @@ public class Grade {
 		return grd;		
 	}
 	public int error(int subject) {
-		int flag=1;	
-		if(subject<0) {
+		if(subject<0|subject>100) {
 			System.out.println("점수를 잘못입력했습니다.");
 			flag=0;
 			return flag;
