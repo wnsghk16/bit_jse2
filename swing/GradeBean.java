@@ -12,55 +12,49 @@ public class GradeBean {
 	private int korean;
 	private int english;
 	private int math;
-	private int student;
-	private int total;
-	private int avg;
 	
-	public GradeBean() {
-		// TODO Auto-generated constructor stub
-	}
 	public GradeBean(String name, int korean, int english, int math) {
 		this.name = name;
 		this.korean = korean;
 		this.english = english;
 		this.math = math;
 	}
-	
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getName() {
 		return name;
 	}	
+	public void setKorean(int korean) {
+		this.korean = korean;
+	}
 	public int getKorean() {
 		return korean;
 	}	
+	public void setEnglish(int english) {
+		this.english = english;
+	}
 	public int getEnglish() {
 		return english;
 	}
+	public void setMath(int math) {
+		this.math = math;
+	}
 	public int getMath() {
 		return math;
+	}	
+	public int total() {
+		return korean+english+math;
 	}
-	public int getTotal() {
-		return total;
-	}
-	public int getAvg() {
-		return avg;
+	public int avg() {
+		return total()/3;
 	}
 	
-	public void total() {
-		total = korean+english+math;
-	}
-	public void avg() {
-		avg = total/3;
-	}
-	public void setStudent(int student){
-		this.student += student;
-	}
-	public int getStudent() {
-		return student;
-	}
 	public String grade() {
 		String grd = "";
+		int avg = avg()/10;
 		
-		switch(avg/10) {
+		switch(avg) {
 			case 9 : 
 				grd = "A";
 				break;

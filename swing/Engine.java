@@ -1,18 +1,18 @@
 package com.jse.swing;
 
 import java.util.Scanner;
-import com.jse.swing.GradeBean;
-import com.jse.swing.MemberBean;
+
 
 public class Engine {
 	
 	public static void main(String[] args) {
 		
 		Scanner scanner = new Scanner(System.in);
-		GradeBean[] gArr = new GradeBean[10];
-		GradeBean grade = new GradeBean();
-		MemberBean[] members = new MemberBean[10];
-		MemberBean member = new MemberBean();
+		GradeService gradeservice = new GradeService();
+		GradeBean[] grades = gradeservice.getGrade();
+		MemberService memberservice = new MemberService();
+		MemberBean[] members = memberservice.getMember();
+		
 	
 		while(true) {
 			System.out.println("\n아래의 숫자중에서 선택해주세요.");
@@ -21,7 +21,8 @@ public class Engine {
 					+ "2.성적표출력 "
 					+ "3.등수확인 "
 					+ "4.회원가입 "
-					+ "5.회원목록 ");			
+					+ "5.회원목록 "
+					+ "6.회원정렬(나이순)");			
 			
 			switch(scanner.nextInt()) {
 			case 0:
@@ -29,61 +30,75 @@ public class Engine {
 				return;
 			case 1:
 				System.out.println("성적표입력");	
-				System.out.print("학생수를 입력해주세요(총 최대10명) : ");
-				int num = grade.getStudent(); // 추가전 학생수
-				grade.setStudent(scanner.nextInt());
-				
-				for(int i=num; i<grade.getStudent(); i++) {
-					gArr[i] = input(scanner);
+				for(int i=0; i<3; i++) {
+					System.out.println("이름, 국어, 영어, 수학 학점을 입력해주세요 : ");
+					gradeservice.add(new GradeBean(scanner.next(),
+							scanner.nextInt(),scanner.nextInt(),scanner.nextInt()));
 				}
 				break;
-			case 2:
+			case 2:				
 				System.out.println("성적표출력");
-				for(int i=0; i<grade.getStudent(); i++) {
+				for(int i=0; i<3; i++) {
 					System.out.println(String.format("[%s : 총점 %d점, "
 							+ "평균 %d점, "
 							+ "학점 : %s]", 
-							gArr[i].getName(), gArr[i].getTotal(), gArr[i].getAvg(), gArr[i].grade()));
+							grades[i].getName(), grades[i].total(), grades[i].avg(), grades[i].grade()));
 				}
 				break;
 			case 3:
 				System.out.println("등수확인"); //총점별로 등수 나열하기 이름
 				
-				for (int i=0; i < grade.getStudent() ; i++ ){
-					for (int j =i+1; j <grade.getStudent() ; j++ ){
-						if (gArr[j].getTotal()>gArr[i].getTotal()){
+				for (int i=0; i < 3 ; i++ ){
+					for (int j =i+1; j <3 ; j++ ){
+						if (grades[j].total()>grades[i].total()){
 							GradeBean tmp = new GradeBean("",0,0,0);
-							tmp = gArr[i];
-							gArr[i] = gArr[j];
-							gArr[j] = tmp;									
+							tmp = grades[i];
+							grades[i] = grades[j];
+							grades[j] = tmp;									
 						}
 					}
 				}
 				
-				for(int i=0; i<grade.getStudent(); i++) {
-					System.out.println(String.format("%d등 : %s",i+1, gArr[i].getName()));										
+				for(int i=0; i<3; i++) {
+					System.out.println(String.format("%d등 : %s",i+1, grades[i].getName()));										
 				}
 
 				
 				break;
 			case 4:
 				System.out.println("회원가입");	
-				System.out.print("회원수를 입력해주세요(총 최대10명) : ");
-				int num2 = member.getCount(); // 추가전 회원수
-				member.setCount(scanner.nextInt());
-				for(int i=num2; i<member.getCount(); i++) {
-					members[i] = join(scanner);
-				}		
-				
+				for(int i=0; i<3; i++) {
+					System.out.println("아이디, 비밀번호, 이름, 나이를 입력해주세요 : ");
+					memberservice.add(new MemberBean(scanner.next(),
+							scanner.next(),scanner.next(),scanner.nextInt()));						
+				}						
 				break;
 			case 5:
 				System.out.println("회원목록");
-				for(int i=0; i<member.getCount(); i++) {
+				for(int i=0; i<3; i++) {
 					System.out.println(String.format("[아이디 : %s, "
 							+ "비밀번호 : %s, "
 							+ "이름 : %s]", 
 							members[i].getUserid(),members[i].getPasswd(), members[i].getName()));
-
+				}
+				break;
+			case 6:
+				System.out.println("회원정렬(나이순)"); //나이순으로 이름 나열하기
+				
+				for (int i=0; i < 3 ; i++ ){
+					for (int j =i+1; j <3 ; j++ ){
+						if (members[j].getAge()>members[i].getAge()){
+							MemberBean tmp = new MemberBean("","","",0);
+							tmp = members[i];
+							members[i] = members[j];
+							members[j] = tmp;									
+						}
+					}
+				}
+				
+				for(int i=0; i<3; i++) {
+					System.out.println(String.format("%d등 : %s(나이:%d)"
+							,i+1, members[i].getName(),members[i].getAge()));										
 				}
 				break;
 			default:
@@ -94,22 +109,4 @@ public class Engine {
 		}
 		
 	}
-	static GradeBean input(Scanner scanner){
-		System.out.println("이름, 국어, 영어, 수학 학점을 입력해주세요 : ");
-		GradeBean grade = new GradeBean(scanner.next(),
-				scanner.nextInt(),scanner.nextInt(),scanner.nextInt());
-		
-		grade.total();
-		grade.avg();
-		return grade;
-		
-	}
-	static MemberBean join(Scanner scanner) {
-		
-		System.out.println("아이디, 비밀번호, 이름을 입력해주세요 : ");
-		MemberBean member = new MemberBean(scanner.next(),scanner.next(),scanner.next());	
-		
-		return member;
-	}
-
 }
