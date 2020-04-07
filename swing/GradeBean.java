@@ -7,53 +7,49 @@ package com.jse.swing;
  *  평균점수가 90점 이상 A * 80점 이상이면 B 70점 이상이면 C 60점 이상이면 D 50점 이상이면 E 
  *  50점 미만이면 F 학점입니다라고 출력되게 해주세요
  */
-public class Grade {
+public class GradeBean {
 	private String name;
 	private int korean;
 	private int english;
 	private int math;
 	private int student;
-	public int flag=1;	
-	public int rank;
-	public int total;
-	public int avg;
+	private int total;
+	private int avg;
 	
-	public void setName(String name){
-		this.name = name;
+	public GradeBean() {
+		// TODO Auto-generated constructor stub
 	}
+	public GradeBean(String name, int korean, int english, int math) {
+		this.name = name;
+		this.korean = korean;
+		this.english = english;
+		this.math = math;
+	}
+	
 	public String getName() {
 		return name;
-	}
-	public void setKorean(int korean){
-		this.korean = korean;
-	}
+	}	
 	public int getKorean() {
 		return korean;
-	}
-	public void setEnglish(int english){
-		this.english = english;
-	}
+	}	
 	public int getEnglish() {
 		return english;
-	}
-	public void setMath(int math){
-		this.math = math;
 	}
 	public int getMath() {
 		return math;
 	}
-	public void setScore(int korean, int english, int math){
-		this.korean = korean;
-		this.english = english;
-		this.math = math;
-	}	
-	public int total() {
-		total = korean+english+math;
+	public int getTotal() {
 		return total;
 	}
-	public int avg() {
-		avg = total/3;
+	public int getAvg() {
 		return avg;
+	}
+	
+	public void total() {
+		total = korean+english+math;
+	}
+	public void avg() {
+		avg = total/3;
 	}
 	public void setStudent(int student){
 		this.student += student;
@@ -63,9 +59,8 @@ public class Grade {
 	}
 	public String grade() {
 		String grd = "";
-		int avg = avg()/10;
 		
-		switch(avg) {
+		switch(avg/10) {
 			case 9 : 
 				grd = "A";
 				break;
@@ -87,13 +82,4 @@ public class Grade {
 		}
 		return grd;		
 	}
-	public int error(int subject) {
-		if(subject<0|subject>100) {
-			System.out.println("점수를 잘못입력했습니다.");
-			flag=0;
-			return flag;
-		}
-		else
-			return flag;				
-	}  
 }

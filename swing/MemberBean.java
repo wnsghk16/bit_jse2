@@ -1,25 +1,24 @@
 package com.jse.swing;
 
-public class Member {
+public class MemberBean {
 	private String userid;
 	private String passwd;
 	private String name;
 	private int count;
 	
-	public void setUserid(String userid){
+	public MemberBean() {
+		// TODO Auto-generated constructor stub
+	}
+	public MemberBean(String userid, String passwd, String name) {
 		this.userid = userid;
+		this.passwd = passwd;
+		this.name = name;
 	}
 	public String getUserid() {
 		return userid;
 	}
-	public void setPasswd(String passwd){
-		this.passwd = passwd;
-	}
 	public String getPasswd() {
 		return passwd;
-	}
-	public void setName(String name){
-		this.name = name;
 	}
 	public String getName() {
 		return name;
