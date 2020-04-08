@@ -3,11 +3,15 @@ package com.jse.inheritance;
 public class PhoneService {
 	private Phone[] phones;
 	private CelPhone[] celphones;
+	private Iphone[] iphones;
+	private GalaxyNote[] galaxynotes;
 	private int count;
 	
 	public PhoneService() {
 		phones = new Phone[3];
 		celphones = new CelPhone[3];
+		iphones = new Iphone[3];
+		galaxynotes = new GalaxyNote[3];
 		count = 0;
 	}
 	public void setPhone(Phone[] phones) {
@@ -28,12 +32,35 @@ public class PhoneService {
 	public void setCelPhones(CelPhone[] celphones) {
 		this.celphones = celphones;
 	}
+	public Iphone[] getIphones() {
+		return iphones;
+	}
+	public void setIphones(Iphone[] iphones) {
+		this.iphones = iphones;
+	}	
+	public GalaxyNote[] getGalaxynotes() {
+		return galaxynotes;
+	}
+	public void setGalaxynotes(GalaxyNote[] galaxynotes) {
+		this.galaxynotes = galaxynotes;
+	}
 	public void add(Phone phone) {
 		phones[count] = phone;
 		count++;
-	}
+	}	
 	public void addCelphone(CelPhone celphone) {
 		celphones[count] = celphone;
 		count++;
+	}
+	public void addIphone(Iphone iphone) {
+		iphones[count] = iphone;
+		count++;
+	}
+	public void addGalxynotes(GalaxyNote galaxynote) {
+		galaxynotes[count] = galaxynote;
+		count++;
+	}
+	public void resetCount() {
+		this.count=0;
 	}
 }
