@@ -4,11 +4,11 @@ public class CelPhone extends Phone{
 	private boolean portable;
 	private String move;
 	
-	public CelPhone(String phonenumber, String name, String company,boolean portable) {
+	public CelPhone(String phonenumber, String name, String company, boolean portable) {
 		super(phonenumber, name, company);
 		this.portable = portable;
-		this.move = move;
-	}		
+		setPortable(portable);
+	}
 	public void setPortable(boolean portable) {
 		if(portable) {
 			this.move = "휴대 가능";
