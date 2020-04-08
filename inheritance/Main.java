@@ -1,10 +1,8 @@
 package com.jse.inheritance;
-import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class Main {
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);	
 		PhoneService phoneservice = new PhoneService();
 		String message ="";
 		
@@ -41,7 +39,7 @@ public class Main {
 				for(int i=0; i<3; i++) {
 					String[] values = JOptionPane.showInputDialog("전화번호, "
 							+ "이름, 회사, 휴대여부(true,false)를 입력해 주세요.").split(",");
-					phoneservice.addCelphone(new CelPhone(values[0],values[1],
+					phoneservice.add(new CelPhone(values[0],values[1],
 							values[2],Boolean.parseBoolean(values[3])));
 				}
 				break;
@@ -58,7 +56,7 @@ public class Main {
 				for(int i=0; i<3; i++) {
 					String[] values = JOptionPane.showInputDialog("전화번호, "
 							+ "이름, 회사, 인터넷검색여부(o,x)를 입력해 주세요.").split(",");
-					phoneservice.addIphone(new Iphone(values[0],values[1],values[2],
+					phoneservice.add(new Iphone(values[0],values[1],values[2],
 							Boolean.parseBoolean(values[3]),values[4]));
 				}
 				break;
@@ -75,7 +73,7 @@ public class Main {
 				for(int i=0; i<3; i++) {
 					String[] values = JOptionPane.showInputDialog("전화번호, "
 							+ "이름, 회사, 인터넷검색(o,x), 큰스트린화면(o,x)를 입력해 주세요.").split(",");
-					phoneservice.addGalxynotes(new GalaxyNote(values[0],values[1],
+					phoneservice.add(new GalaxyNote(values[0],values[1],
 							values[2],Boolean.parseBoolean(values[3]),values[4],values[5]));
 				}
 				break;

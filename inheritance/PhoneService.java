@@ -14,6 +14,22 @@ public class PhoneService {
 		galaxynotes = new GalaxyNote[3];
 		count = 0;
 	}
+	public void add(Phone phone) {
+		phones[count] = phone;
+		count++;
+	}	
+	public void add(CelPhone celphone) {
+		celphones[count] = celphone;
+		count++;
+	}
+	public void add(Iphone iphone) {
+		iphones[count] = iphone;
+		count++;
+	}
+	public void add(GalaxyNote galaxynote) {
+		galaxynotes[count] = galaxynote;
+		count++;
+	}
 	public void setPhone(Phone[] phones) {
 		this.phones = phones;
 	}
@@ -44,23 +60,7 @@ public class PhoneService {
 	public void setGalaxynotes(GalaxyNote[] galaxynotes) {
 		this.galaxynotes = galaxynotes;
 	}
-	public void add(Phone phone) {
-		phones[count] = phone;
-		count++;
-	}	
-	public void addCelphone(CelPhone celphone) {
-		celphones[count] = celphone;
-		count++;
-	}
-	public void addIphone(Iphone iphone) {
-		iphones[count] = iphone;
-		count++;
-	}
-	public void addGalxynotes(GalaxyNote galaxynote) {
-		galaxynotes[count] = galaxynote;
-		count++;
-	}
 	public void resetCount() {
-		this.count=0;
+		count=0;
 	}
 }
