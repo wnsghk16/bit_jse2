@@ -7,73 +7,12 @@ package com.jse.grade;
  *  평균점수가 90점 이상 A * 80점 이상이면 B 70점 이상이면 C 60점 이상이면 D 50점 이상이면 E 
  *  50점 미만이면 F 학점입니다라고 출력되게 해주세요
  */
+
+import lombok.Data;
+import com.oracle.webservices.internal.api.databinding.DatabindingMode;
+
+@Data
 public class Grade {
 	private String name;
-	private int korean;
-	private int english;
-	private int math;
-	
-	public Grade(String name, int korean, int english, int math) {
-		this.name = name;
-		this.korean = korean;
-		this.english = english;
-		this.math = math;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getName() {
-		return name;
-	}	
-	public void setKorean(int korean) {
-		this.korean = korean;
-	}
-	public int getKorean() {
-		return korean;
-	}	
-	public void setEnglish(int english) {
-		this.english = english;
-	}
-	public int getEnglish() {
-		return english;
-	}
-	public void setMath(int math) {
-		this.math = math;
-	}
-	public int getMath() {
-		return math;
-	}	
-	public int total() {
-		return korean+english+math;
-	}
-	public int avg() {
-		return total()/3;
-	}
-	
-	public String grade() {
-		String grd = "";
-		int avg = avg()/10;
-		
-		switch(avg) {
-			case 9 : 
-				grd = "A";
-				break;
-			case 8 : 
-				grd = "B";
-				break;
-			case 7 : 
-				grd = "C";
-				break;
-			case 6 : 
-				grd = "D";
-				break;
-			case 5 : 
-				grd = "E";
-				break;
-			default : 
-				grd = "F";
-				break;			
-		}
-		return grd;		
-	}
+	private int korean, english, math;
 }

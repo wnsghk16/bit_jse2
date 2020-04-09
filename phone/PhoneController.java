@@ -5,8 +5,12 @@ import com.jse.util.Constants;
 public class PhoneController {
 	
 	public static void main(String[] args) {
-		PhoneService phoneservice = new PhoneService();
+		PhoneService phoneservice = new PhoneServiceImpl();
 		String message ="";
+		Phone phone = null;
+		CelPhone celphone = null;
+		Iphone iphone = null;
+		GalaxyNote galaxynote = null;
 		while(true) {
 			switch(JOptionPane.showInputDialog(Constants.MENU)) {
 			case "0":
@@ -15,7 +19,11 @@ public class PhoneController {
 			case "1":
 				for(int i=0; i<3; i++) {
 					String[] values = JOptionPane.showInputDialog(Constants.PHONE_MENU).split(",");
-					phoneservice.add(new Phone(values[0],values[1],values[2]));
+					phone = new Phone();
+					phone.setPhonenumber(values[0]);
+					phone.setName(values[1]);
+					phone.setCompany(values[2]);
+					phoneservice.add(phone);
 				}
 				break;
 			case "2":
@@ -29,8 +37,12 @@ public class PhoneController {
 				phoneservice.resetCount();
 				for(int i=0; i<3; i++) {
 					String[] values = JOptionPane.showInputDialog(Constants.CELPHONE_MENU).split(",");
-					phoneservice.add(new CelPhone(values[0],values[1],
-							values[2],Boolean.parseBoolean(values[3])));
+					celphone = new CelPhone();
+					celphone.setPhonenumber(values[0]);
+					celphone.setName(values[1]);
+					celphone.setCompany(values[2]);
+					celphone.setPortable(Boolean.parseBoolean(values[3]));
+					phoneservice.add(celphone);
 				}
 				break;
 			case "4":
@@ -44,8 +56,13 @@ public class PhoneController {
 				phoneservice.resetCount();
 				for(int i=0; i<3; i++) {
 					String[] values = JOptionPane.showInputDialog(Constants.IPHONE_MENU).split(",");
-					phoneservice.add(new Iphone(values[0],values[1],values[2],
-							Boolean.parseBoolean(values[3]),values[4]));
+					iphone = new Iphone();
+					iphone.setPhonenumber(values[0]);
+					iphone.setName(values[1]);
+					iphone.setCompany(values[2]);
+					iphone.setPortable(Boolean.parseBoolean(values[3]));
+					iphone.setSearch(values[4]);
+					phoneservice.add(iphone);
 				}
 				break;
 			case "6":
@@ -59,8 +76,14 @@ public class PhoneController {
 				phoneservice.resetCount();
 				for(int i=0; i<3; i++) {
 					String[] values = JOptionPane.showInputDialog(Constants.GALAXYPHONE_MENU).split(",");
-					phoneservice.add(new GalaxyNote(values[0],values[1],
-							values[2],Boolean.parseBoolean(values[3]),values[4],values[5]));
+					galaxynote = new GalaxyNote();
+					galaxynote.setPhonenumber(values[0]);
+					galaxynote.setName(values[1]);
+					galaxynote.setCompany(values[2]);
+					galaxynote.setPortable(Boolean.parseBoolean(values[3]));
+					galaxynote.setSearch(values[4]);
+					galaxynote.setBigsize(values[5]);
+					phoneservice.add(galaxynote);
 				}
 				break;
 			case "8":
