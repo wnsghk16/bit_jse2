@@ -1,7 +1,7 @@
-package com.jse.arr;
+package com.jse.card;
 import java.util.Scanner;
 
-public class Main {
+public class CardController {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		CardService service = new CardService();
@@ -18,12 +18,12 @@ public class Main {
 				System.out.println("카드3장 받기");
 				for(int i=0; i<3; i++) {	
 					System.out.println("카드 모양, 숫자를 입력해주세요 : ");				
-					service.add(new CardBean(scanner.next(),scanner.nextInt()));
+					service.add(new Card(scanner.next(),scanner.nextInt()));
 				}
 				break;
 			case 2:
 				System.out.println("카드확인");
-				CardBean[] cards = service.getCards();
+				Card[] cards = service.getCards();
 				for(int i=0; i<3; i++) {
 					System.out.println(String.format("[카드모양 : %s, 카드넘버 : %d]", 
 							cards[i].getKind(),cards[i].getNumber()));

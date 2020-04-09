@@ -1,17 +1,20 @@
-package com.jse.swing;
+package com.jse.grade;
 
 import java.util.Scanner;
 
+import com.jse.member.Member;
+import com.jse.member.MemberService;
 
-public class Engine {
+
+public class GradeController {
 	
 	public static void main(String[] args) {
 		
 		Scanner scanner = new Scanner(System.in);
 		GradeService gradeservice = new GradeService();
-		GradeBean[] grades = gradeservice.getGrade();
+		Grade[] grades = gradeservice.getGrade();
 		MemberService memberservice = new MemberService();
-		MemberBean[] members = memberservice.getMember();
+		Member[] members = memberservice.getMember();
 		
 	
 		while(true) {
@@ -32,7 +35,7 @@ public class Engine {
 				System.out.println("성적표입력");	
 				for(int i=0; i<3; i++) {
 					System.out.println("이름, 국어, 영어, 수학 학점을 입력해주세요 : ");
-					gradeservice.add(new GradeBean(scanner.next(),
+					gradeservice.add(new Grade(scanner.next(),
 							scanner.nextInt(),scanner.nextInt(),scanner.nextInt()));
 				}
 				break;
@@ -51,7 +54,7 @@ public class Engine {
 				for (int i=0; i < 3 ; i++ ){
 					for (int j =i+1; j <3 ; j++ ){
 						if (grades[j].total()>grades[i].total()){
-							GradeBean tmp = new GradeBean("",0,0,0);
+							Grade tmp = new Grade("",0,0,0);
 							tmp = grades[i];
 							grades[i] = grades[j];
 							grades[j] = tmp;									
@@ -69,7 +72,7 @@ public class Engine {
 				System.out.println("회원가입");	
 				for(int i=0; i<3; i++) {
 					System.out.println("아이디, 비밀번호, 이름, 나이를 입력해주세요 : ");
-					memberservice.add(new MemberBean(scanner.next(),
+					memberservice.add(new Member(scanner.next(),
 							scanner.next(),scanner.next(),scanner.nextInt()));						
 				}						
 				break;
@@ -88,7 +91,7 @@ public class Engine {
 				for (int i=0; i < 3 ; i++ ){
 					for (int j =i+1; j <3 ; j++ ){
 						if (members[j].getAge()>members[i].getAge()){
-							MemberBean tmp = new MemberBean("","","",0);
+							Member tmp = new Member("","","",0);
 							tmp = members[i];
 							members[i] = members[j];
 							members[j] = tmp;									

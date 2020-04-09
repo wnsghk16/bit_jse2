@@ -1,17 +1,17 @@
-package com.jse.swing;
+package com.jse.member;
 
 public class MemberService{
-	private MemberBean[] members;
+	private Member[] members;
 	int count;
 	
 	public MemberService() {
-		members = new MemberBean[10];
+		members = new Member[10];
 		count = 0;
 	}
-	public void setMember(MemberBean[] members) {
+	public void setMember(Member[] members) {
 		this.members = members;
 	}
-	public MemberBean[] getMember() {
+	public Member[] getMember() {
 		return members;
 	}
 	public void setCount(int count) {
@@ -20,7 +20,7 @@ public class MemberService{
 	public int getCount() {
 		return count;
 	}
-	public void add(MemberBean member) {
+	public void add(Member member) {
 		members[count] = member;
 		count++;
 	}

@@ -1,4 +1,4 @@
-package com.jse.swing;
+package com.jse.grade;
 /*
  * 클라이언트에서 프로그램 개발 요청이 왔습니다. 
  * * 이름과 국,영,수 세과목점수를 입력받아서() 
@@ -7,13 +7,13 @@ package com.jse.swing;
  *  평균점수가 90점 이상 A * 80점 이상이면 B 70점 이상이면 C 60점 이상이면 D 50점 이상이면 E 
  *  50점 미만이면 F 학점입니다라고 출력되게 해주세요
  */
-public class GradeBean {
+public class Grade {
 	private String name;
 	private int korean;
 	private int english;
 	private int math;
 	
-	public GradeBean(String name, int korean, int english, int math) {
+	public Grade(String name, int korean, int english, int math) {
 		this.name = name;
 		this.korean = korean;
 		this.english = english;
