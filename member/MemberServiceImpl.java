@@ -5,18 +5,18 @@ public class MemberServiceImpl implements MemberService{
 	int count;
 	
 	public MemberServiceImpl() {
-		members = new Member[10];
+		members = new Member[5];
 		count = 0;
 	}
 
 	@Override
-	public void setMember(Member[] members) {
+	public void setMembers(Member[] members) {
 		this.members = members;
 		
 	}
 
 	@Override
-	public Member[] getMember() {
+	public Member[] getMembers() {
 		return members;
 	}
 
