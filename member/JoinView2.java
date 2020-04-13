@@ -19,16 +19,9 @@ public class JoinView2 extends JFrame implements ActionListener {
 	JTextField[] jtextfield;
 	JLabel[] jlabel;
 	MemberService memberservice;
-	Member member;
-	String[] name;
-	String[] userid;
-	String[] passwd;
-	String[] idum;
-	String[] ect;
 	
 	public JoinView2() {
 		memberservice = new MemberServiceImpl();
-		member = null;
 	}
 	public void open() {
 		this.setSize(500, 500); 
@@ -80,35 +73,31 @@ public class JoinView2 extends JFrame implements ActionListener {
 		}
 	@Override
 	public void actionPerformed(ActionEvent e)  {		
-		if(e.getSource() == saveButton) {			
+		if(e.getSource() == saveButton) {		
+						
 			jtextfield[0].setText("홍길동,유관순,이순신,신사임당,이도");
 			jtextfield[1].setText("hong,you,lee,shin,leedo");
 			passwordField.setText("1,12,123,134,1234");
 			jtextfield[2].setText("900101-1,960101-2,980101-1,011010-4,020606-3");
 			jtextfield[3].setText("없음,없음,있음,없음,있음");
-					
-			String[] data = String.format("%s/%s/%s/%s/%s", 
+			
+			
+			String data = String.format("%s/%s/%s/%s/%s", 
 					jtextfield[0].getText(),
 					jtextfield[1].getText(),
 					new String(passwordField.getPassword()),
 					jtextfield[2].getText(),
-					jtextfield[3].getText()).split("/");
+					jtextfield[3].getText());
 			
-			/*
-			 * data[0]=홍길동,유관순,이순신,신사임당,이도
-			 * data[1]=hong,you,lee,shin,leedo
-			 * data[2]=1,12,123,134,1234
-			 * data[3]=900101-1,960101-2,980101-1,011010-4,020606-3
-			 * data[4]=없음,없음,있음,없음,있음
-			*/
-
-			name = data[0].split(",");
-			userid = data[1].split(",");
-			passwd = data[2].split(",");
-			idum = data[3].split(",");
-			ect = data[4].split(",");
+			String[] arr = data.split("/");
 			
+			String[] name = arr[0].split(",");
+			String[] userid = arr[1].split(",");
+			String[] passwd = arr[2].split(",");
+			String[] idum = arr[3].split(",");
+			String[] ect = arr[4].split(",");
 			
+			Member member = new Member();
 			for(int i=0; i<5; i++) {
 				member = new Member();
 				member.setUserid(userid[i]);
@@ -117,12 +106,14 @@ public class JoinView2 extends JFrame implements ActionListener {
 				member.setIdnum(idum[i]);
 				member.setEct(ect[i]);
 				memberservice.add(member);						
-			}	
+			}		
 			
 			Member[] members = memberservice.getMembers();
+			String message ="";
 			for(int i=0; i<members.length; i++) {
-				JOptionPane.showMessageDialog(this, members[i].toString());
+				message += members[i]+"\n";
 			}
+			JOptionPane.showMessageDialog(this, message);
 		}else if(e.getSource() == cancelButton){
 			JOptionPane.showMessageDialog(this, "취소했습니다.");
 		}		
