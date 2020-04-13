@@ -9,13 +9,16 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 
 public class JoinView2 extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
-	JButton saveButton,cancelButton;  
+	JButton saveButton,listButton, loginButton;  
 	JPasswordField passwordField; 
+	JTextArea jtextarea;
+	JLabel areaLabel;
 	JTextField[] jtextfield;
 	JLabel[] jlabel;
 	MemberService memberservice;
@@ -24,53 +27,65 @@ public class JoinView2 extends JFrame implements ActionListener {
 		memberservice = new MemberServiceImpl();
 	}
 	public void open() {
-		this.setSize(500, 500); 
+		this.setSize(600,600); 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		this.setVisible(true); 
 		JPanel panel = new JPanel(); 
 		this.add(panel); 
 		
-		jlabel = new JLabel[5];
+		jlabel = new JLabel[6];
 				
-		String[] name = {"이름","아이디","패스워드","주민번호","추가사항"};
-		for(int i=0; i<name.length; i++) {			
+		String[] name = {"이름","아이디","패스워드","주민번호","추가사항","검색결과"};
+		for(int i=0; i<name.length-1; i++) {			
 			jlabel[i] = new JLabel(name[i]);			
 			panel.add(jlabel[i]);
 			
 		}
+		areaLabel = new JLabel();
+		panel.add(areaLabel);
 		
 		jtextfield = new JTextField[4];
 		for(int i=0; i<jtextfield.length; i++) {
 			jtextfield[i] = new JTextField();
 			panel.add(jtextfield[i]);
 		}
+		
+		jtextarea = new JTextArea();
+		panel.add(jtextarea);
 		passwordField = new JPasswordField(); 
 		panel.add(passwordField); 
 		
 		saveButton = new JButton("저장"); 
-		cancelButton = new JButton("취소"); 
+		listButton = new JButton("목록");
+		loginButton = new JButton("로그인");
 		saveButton.addActionListener(this);
-		cancelButton.addActionListener(this);
+		listButton.addActionListener(this);
+		loginButton.addActionListener(this);
 		
 		panel.add(saveButton); 
-		panel.add(cancelButton); 
+		panel.add(listButton);
+		panel.add(loginButton); 
 		
 		jlabel[0].setBounds(40,10,40,40); 
 		jlabel[1].setBounds(40,50,40,40); 
 		jlabel[2].setBounds(40,90,60,40); 
-		jlabel[3].setBounds(40,130,60,40); 
+		jlabel[3].setBounds(40,130,40,40); 
 		jlabel[4].setBounds(40,170,60,40); 
+		areaLabel.setBounds(40,210,60,40); 
 		
 		jtextfield[0].setBounds(120,10,200,30); 
 		jtextfield[1].setBounds(120,50,200,30); 
 		passwordField.setBounds(120,90,200,30); 
 		jtextfield[2].setBounds(120,130,280,30); 
-		jtextfield[3].setBounds(120,180,280,120); 
+		jtextfield[3].setBounds(120,180,280,30); 
+		jtextarea.setBounds(120,220,280,150);
 		
-		saveButton.setBounds(125, 330, 80, 30); 
-		cancelButton.setBounds(240, 330, 80, 30); 
+		saveButton.setBounds(125,400,80,30);
+		listButton.setBounds(240,400,80,30);
+		loginButton.setBounds(340,400,80,30); 
+		
 		this.setLocationRelativeTo(null);
-		}
+	}
 	@Override
 	public void actionPerformed(ActionEvent e)  {		
 		if(e.getSource() == saveButton) {		
@@ -79,7 +94,7 @@ public class JoinView2 extends JFrame implements ActionListener {
 			jtextfield[1].setText("hong,you,lee,shin,leedo");
 			passwordField.setText("1,12,123,134,1234");
 			jtextfield[2].setText("900101-1,960101-2,980101-1,011010-4,020606-3");
-			jtextfield[3].setText("없음,없음,있음,없음,있음");
+			jtextarea.setText("없음,없음,있음,없음,있음");
 			
 			
 			String data = String.format("%s/%s/%s/%s/%s", 
@@ -87,7 +102,7 @@ public class JoinView2 extends JFrame implements ActionListener {
 					jtextfield[1].getText(),
 					new String(passwordField.getPassword()),
 					jtextfield[2].getText(),
-					jtextfield[3].getText());
+					jtextarea.getText());
 			
 			String[] arr = data.split("/");
 			
@@ -106,16 +121,19 @@ public class JoinView2 extends JFrame implements ActionListener {
 				member.setIdnum(idum[i]);
 				member.setEct(ect[i]);
 				memberservice.add(member);						
-			}		
-			
+			}
+			JOptionPane.showMessageDialog(this, "저장했습니다.");
+		}else if(e.getSource() == listButton){
 			Member[] members = memberservice.getMembers();
 			String message ="";
 			for(int i=0; i<members.length; i++) {
 				message += members[i]+"\n";
 			}
-			JOptionPane.showMessageDialog(this, message);
-		}else if(e.getSource() == cancelButton){
-			JOptionPane.showMessageDialog(this, "취소했습니다.");
+			jtextarea.setText(message);	
+			jtextfield[0].setText("");
+			jtextfield[1].setText("");
+			passwordField.setText("");
+			jtextfield[2].setText("");
 		}		
 	} 
 }
