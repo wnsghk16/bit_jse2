@@ -8,5 +8,6 @@ public interface MemberService {
 	public void add(Member member);
 	public String printMembers();
 	public String ranking();
+	public Member login(Member member);
 	
 }

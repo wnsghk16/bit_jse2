@@ -5,7 +5,7 @@ public class GradeServiceImpl implements GradeService{
 	private int count;
 	
 	public GradeServiceImpl() {
-		grades = new Grade[100];
+		grades = new Grade[5];
 		count = 0;
 	}	
 	@Override

@@ -14,5 +14,5 @@ import com.oracle.webservices.internal.api.databinding.DatabindingMode;
 @Data
 public class Grade {
 	private String name;
-	private int korean, english, math;
+	private int korean, english, math, java;
 }
