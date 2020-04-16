@@ -46,62 +46,74 @@ public class PhoneServiceImpl implements PhoneService{
 	}
 
 	@Override
-	public Phone[] phoneList() {		
-		return phones;
-	}
-
-	@Override
-	public Phone[] phoneDetail() {
+	public Phone[] phoneList() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public CelPhone[] celphoneList() {
-		return celphones;
-	}
-
-	@Override
-	public CelPhone[] celphoneDetail() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Iphone[] iphoneList() {
-		return iphones;
-	}
-
-	@Override
-	public Iphone[] iphoneDetail() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public GalaxyNote[] galaxynoteList() {
-		return galaxynotes;
-	}
-
-	@Override
-	public GalaxyNote[] galaxynoteDetail() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void update(Phone phone) {
+	public Phone detail(Phone phone) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CelPhone detail(CelPhone celphone) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Iphone detail(Iphone iphone) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public GalaxyNote detail(GalaxyNote galaxynote) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void udate(Phone phone) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void update(CelPhone celphone) {
+	public void udate(CelPhone celphone) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void update(Iphone iphone) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void update(GalaxyNote galaxynote) {
+		// TODO Auto-generated method stub
 		
 	}
 
@@ -110,6 +122,7 @@ public class PhoneServiceImpl implements PhoneService{
 		// TODO Auto-generated method stub
 		
 	}
+
 	@Override
 	public void delete(CelPhone celphone) {
 		// TODO Auto-generated method stub
@@ -127,4 +140,5 @@ public class PhoneServiceImpl implements PhoneService{
 		// TODO Auto-generated method stub
 		
 	}
+
 }
