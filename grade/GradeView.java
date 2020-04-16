@@ -158,7 +158,7 @@ public class GradeView extends JFrame implements ActionListener {
 			}
 			JOptionPane.showMessageDialog(this, "저장했습니다.");
 		}else if(e.getSource() == listButton) {
-			Grade[] grades = gradeservice.getGrade();
+			Grade[] grades = gradeservice.list();
 			String message = "";
 			for(int i=0; i<grades.length; i++) {
 				message += grades[i]+"\n";

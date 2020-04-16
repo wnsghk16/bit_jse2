@@ -8,28 +8,36 @@ public class GradeServiceImpl implements GradeService{
 		grades = new Grade[5];
 		count = 0;
 	}	
-	@Override
-	public void setGrade(Grade[] grades) {
-		this.grades = grades;
-	}
-	@Override
-	public Grade[] getGrade() {
-		return grades;
-	}
-	@Override
+	
 	public void add(Grade grade) {
 		grades[count]=grade;
 		count++;		
 	}
 	@Override
-	public void setCount(int count) {
-		this.count = count;
+	public Grade[] list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Grade[] detail(Grade grade) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public int count() {
+		return count;
+	}
+	@Override
+	public void update(Grade grade) {
+		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public int getCount() {
-		return count;
+	public void delete(Grade grade) {
+		// TODO Auto-generated method stub
+		
 	}
+	
 	@Override
 	public int total(Grade grade) {
 		return grade.getKorean()+grade.getEnglish()+grade.getMath();

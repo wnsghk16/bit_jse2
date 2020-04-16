@@ -27,7 +27,7 @@ public class PhoneController {
 				}
 				break;
 			case "2":
-				Phone [] phones = phoneservice.getPhone();
+				Phone [] phones = phoneservice.phoneList();
 				for(int i=0; i<3; i++) {
 					message += phones[i].toString()+"\n";					
 				}
@@ -46,7 +46,7 @@ public class PhoneController {
 				}
 				break;
 			case "4":
-				CelPhone [] celphones = phoneservice.getCelPhones();
+				CelPhone [] celphones = phoneservice.celphoneList();
 				for(int i=0; i<3; i++) {
 					message += celphones[i].toString()+"\n";
 				}
@@ -66,7 +66,7 @@ public class PhoneController {
 				}
 				break;
 			case "6":
-				Iphone[] iphones = phoneservice.getIphones();
+				Iphone[] iphones = phoneservice.iphoneList();
 				for(int i=0; i<3; i++) {
 					message += iphones[i].toString()+"\n";
 				}
@@ -87,7 +87,7 @@ public class PhoneController {
 				}
 				break;
 			case "8":
-				GalaxyNote[] galaxynotes = phoneservice.getGalaxynotes();
+				GalaxyNote[] galaxynotes = phoneservice.galaxynoteList();
 				for(int i=0; i<3; i++) {
 					message += galaxynotes[i].toString()+"\n";					
 				}

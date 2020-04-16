@@ -173,7 +173,7 @@ public class MemberView extends JFrame implements ActionListener {
 			}
 			JOptionPane.showMessageDialog(this, "저장했습니다.");
 		}else if(e.getSource() == listButton){
-			Member[] members = memberService.getMembers();
+			Member[] members = memberService.list();
 			String message ="";
 			for(int i=0; i<members.length; i++) {
 				message += members[i]+"\n";

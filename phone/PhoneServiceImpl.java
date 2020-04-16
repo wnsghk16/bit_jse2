@@ -14,46 +14,7 @@ public class PhoneServiceImpl implements PhoneService{
 		galaxynotes = new GalaxyNote[3];
 		count = 0;
 	}
-	@Override
-	public void setPhone(Phone[] phones) {
-		this.phones = phones;
-	}
-	@Override
-	public Phone[] getPhone() {
-		return phones;
-	}
-	@Override
-	public void setCount(int count) {
-		this.count = count;
-	}
-	@Override
-	public int getCount() {
-		return count;
-	}
-	@Override
-	public CelPhone[] getCelPhones() {
-		return celphones;
-	}
-	@Override
-	public void setCelPhones(CelPhone[] celphones) {
-		this.celphones = celphones;
-	}
-	@Override
-	public Iphone[] getIphones() {
-		return iphones;
-	}
-	@Override
-	public void setIphones(Iphone[] iphones) {
-		this.iphones = iphones;
-	}
-	@Override
-	public GalaxyNote[] getGalaxynotes() {
-		return galaxynotes;
-	}
-	@Override
-	public void setGalaxynotes(GalaxyNote[] galaxynotes) {
-		this.galaxynotes = galaxynotes;
-	}
+	
 	@Override
 	public void add(Phone phone) {
 		phones[count] = phone;
@@ -74,8 +35,96 @@ public class PhoneServiceImpl implements PhoneService{
 		galaxynotes[count] = galaxynote;
 		count++;
 	}
+
+	@Override
+	public int count() {
+		return count;
+	}	
 	@Override
 	public void resetCount() {
 		count=0;
+	}
+
+	@Override
+	public Phone[] phoneList() {		
+		return phones;
+	}
+
+	@Override
+	public Phone[] phoneDetail() {
+		return null;
+	}
+
+	@Override
+	public CelPhone[] celphoneList() {
+		return celphones;
+	}
+
+	@Override
+	public CelPhone[] celphoneDetail() {
+		return null;
+	}
+
+	@Override
+	public Iphone[] iphoneList() {
+		return iphones;
+	}
+
+	@Override
+	public Iphone[] iphoneDetail() {
+		return null;
+	}
+
+	@Override
+	public GalaxyNote[] galaxynoteList() {
+		return galaxynotes;
+	}
+
+	@Override
+	public GalaxyNote[] galaxynoteDetail() {
+		return null;
+	}
+
+	@Override
+	public void update(Phone phone) {
+		
+	}
+
+	@Override
+	public void update(CelPhone celphone) {
+		
+	}
+
+	@Override
+	public void update(Iphone iphone) {
+		
+	}
+
+	@Override
+	public void update(GalaxyNote galaxynote) {
+		
+	}
+
+	@Override
+	public void delete(Phone phone) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void delete(CelPhone celphone) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Iphone iphone) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(GalaxyNote galaxynote) {
+		// TODO Auto-generated method stub
+		
 	}
 }
